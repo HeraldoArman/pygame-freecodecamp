@@ -28,14 +28,14 @@ while running:
             running = False
 
 
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_LEFT:
-            print("lol1")
-        if event.key == pygame.K_RIGHT:
-            print("lol2")
-    if event.type == pygame.KEYUP:
-        if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-            print("lepas")
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                print("lol1")
+            if event.key == pygame.K_RIGHT:
+                print("lol2")
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                print("lepas")
 
 
     player(playerX, playerY)
