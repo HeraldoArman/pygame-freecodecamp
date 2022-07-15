@@ -30,13 +30,15 @@ while running:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
-                print("lol1")
+                PlayerX_change = -0.1
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-                print("lol2")
+                PlayerX_change = 0.1
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or event.key == pygame.K_a or event.key == pygame.K_d:
-                print("lepas")
+                PlayerX_change = 0.1
 
+    playerX += PlayerX_change
 
     player(playerX, playerY)
 
