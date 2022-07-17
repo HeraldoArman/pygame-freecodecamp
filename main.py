@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 screenX = 800
 screenY = 600
-screen = pygame.display.set_mode((screenX, screenY))
+screen = pygame.display.set_mode((screenX, screenY), pygame.FULLSCREEN)
 #, pygame.FULLSCREEN
 pygame.display.set_caption('lolol')
 icon = pygame.image.load("spaceship.png")
@@ -45,14 +45,14 @@ while running:
             #pygame.mouse.set_visible(False)
             mouse_pos = list(pygame.mouse.get_pos())[0] - screenX/2
             
-            if mouse_pos >=screenX/2-50:
+            if mouse_pos >=screenX/2-10:
                 try:
                     mouse_pos1 = new_mouse_pos
                 except NameError:
                     mouse_pos1 = mouse_pos
                 pygame.mouse.set_pos(screenX/2, screenY/2)
 
-            if mouse_pos <=-screenX/2+50:
+            if mouse_pos <=-screenX/2+10:
                 try:
                     mouse_pos1 = new_mouse_pos
                 except NameError:
@@ -69,7 +69,7 @@ while running:
             #    pygame.mouse.set_pos(screenX/2, screenY/2)
             
             
-            print(new_mouse_pos)
+            #print(new_mouse_pos)
             PlayerX_change = new_mouse_pos * 0.001
             
 
@@ -86,11 +86,11 @@ while running:
 
     playerX = playerX + PlayerX_change
 
-
-    if playerX <= 0:
-        playerX = 0
-    if playerX >= 736:
-        playerX = 736
+    print(playerX)
+    if playerX < -32:
+        playerX = screenX-32
+    if playerX > screenX-32:
+        playerX = -32
 
     enemy(EnemyX, EnemyY)
     player(playerX, playerY)
