@@ -1,9 +1,11 @@
 import pygame
+import random
+
 
 pygame.init()
 screenX = 800
 screenY = 600
-screen = pygame.display.set_mode((screenX, screenY), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((screenX, screenY))
 #, pygame.FULLSCREEN
 pygame.display.set_caption('lolol')
 icon = pygame.image.load("spaceship.png")
@@ -14,11 +16,17 @@ playerImg = pygame.image.load("spaceship.png")
 playerImg = pygame.transform.scale(playerImg, (64, 64))
 playerX = screenX/2
 playerY = 480
+PlayerX_change = 0
+
+
 
 EnemyImg = pygame.image.load("alien.png")
 EnemyImg = pygame.transform.scale(EnemyImg, (64, 64))
-EnemyX = 370
-EnemyY = 50
+EnemyX = random.randint(0, screenX-64)
+EnemyY = random.randint(50,150)
+EnemyX_change = 0.5
+EnemyY_change = 40
+
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -27,9 +35,8 @@ def player(x, y):
 def enemy(x, y):
     screen.blit(EnemyImg, (x, y))
 mouse_pos1 = 0
-PlayerX_change = 0
 running = True
-new_mouse_pos = 0
+#new_mouse_pos = 0
 while running:
     screen.fill((20, 20, 20))
     for event in pygame.event.get():
@@ -90,6 +97,18 @@ while running:
         playerX = screenX-32
     if playerX > screenX-32:
         playerX = -32
+
+    EnemyX += EnemyX_change
+
+    if EnemyX <=0:
+        EnemyX_change = -EnemyX_change
+        EnemyY += EnemyY_change
+    if EnemyX > screenX-64:
+        EnemyX_change = -EnemyX_change
+        EnemyY += EnemyY_change
+
+
+
 
     enemy(EnemyX, EnemyY)
     player(playerX, playerY)
