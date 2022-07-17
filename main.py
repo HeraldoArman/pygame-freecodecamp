@@ -12,7 +12,7 @@ pygame.display.set_icon(icon)
 
 playerImg = pygame.image.load("spaceship.png")
 playerImg = pygame.transform.scale(playerImg, (64, 64))
-playerX = 370
+playerX = screenX/2
 playerY = 480
 
 EnemyImg = pygame.image.load("alien.png")
@@ -39,20 +39,22 @@ while running:
             if event.key == pygame.K_ESCAPE:
                 running = False
         
+
+        
         if pygame.mouse.get_pressed():
             #pygame.mouse.set_visible(False)
             mouse_pos = list(pygame.mouse.get_pos())[0] - screenX/2
             
             if mouse_pos >=screenX/2-50:
                 try:
-                    mouse_pos1 = mouse_pos + new_mouse_pos
+                    mouse_pos1 = new_mouse_pos
                 except NameError:
                     mouse_pos1 = mouse_pos
                 pygame.mouse.set_pos(screenX/2, screenY/2)
 
             if mouse_pos <=-screenX/2+50:
                 try:
-                    mouse_pos1 = mouse_pos + new_mouse_pos
+                    mouse_pos1 = new_mouse_pos
                 except NameError:
                     mouse_pos1 = mouse_pos
                 pygame.mouse.set_pos(screenX/2, screenY/2)
