@@ -86,7 +86,6 @@ while running:
 
     playerX = playerX + PlayerX_change
 
-    
     if playerX < -32:
         playerX = screenX-32
     if playerX > screenX-32:
